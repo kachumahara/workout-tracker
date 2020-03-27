@@ -1,9 +1,8 @@
 //setting up dependencies
 const express = require('express');
-const morgan = require('morgan');
+const logger = require('morgan');
 const path = require('path');
 const mongoose = require('mongoose');
-const Workout = require('./models/workout.js');
 const db = require('./models');
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 app.use(logger("dev"));
 
 // using predefined format string'tiny'
-app.use("morgan")
+
 
 // parse requests as JSON 
 app.use(express.urlencoded({ extended: true}));
@@ -27,4 +26,37 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
 });
 
 //html
-app.get()
+app.get('/', (request, response) => {
+  response.sendFile(path.join(__dirname+'/public/index.html'))
+});
+
+app.get('/exercise', (request, response) => {
+  response.sendFile(path.join(__dirname+'/public/exercise.html'))
+});
+
+app.get('/stats', (request, response) => {
+  response.sendFile(path.join(__dirname+'/public/stats.html'))
+});
+
+//getting Workout Schemca from models/workout.js
+
+app.get('/api/workouts', (request, response) => {
+  db.Workout.find({})
+  .then(dbWorkout => {
+    response.json(dbWorkout)
+  })
+  .catch(error => {
+    response.send(error)
+  })
+});
+
+//creating a new post workout
+
+
+
+
+
+// listen for server connection
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}!`);
+});
