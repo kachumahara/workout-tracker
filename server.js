@@ -50,7 +50,7 @@ app.get('/api/workouts', (request, response) => {
   })
 });
 
-//creating a new post workout
+//creating a new post workout --> post
 app.post('/api/workouts', ({ body }, response) => {
   db.Workout.create(body)
   .then(dbWorkout => {
@@ -61,9 +61,19 @@ app.post('/api/workouts', ({ body }, response) => {
   });
 });
 
+// edit existing workout--> put
 app.put('/api/workouts/:id:', ({ body, params }, response) => {
+  db.Workout.findByIdAndUpdate(
+    param.id, { $push: { exercise:body }}, { new: true, }
+  )
+  .then(dbWorkout => {
+    response.json(dbWorkout)
+  })
+  .catch(error => {
+    response.json(error)
+  });
 
-})
+});
 
 
 
