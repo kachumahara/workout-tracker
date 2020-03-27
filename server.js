@@ -51,15 +51,19 @@ app.get('/api/workouts', (request, response) => {
 });
 
 //creating a new post workout
-app.post('/api/workouts', (request, response) => {
-  db.Workout.create(request.body)
+app.post('/api/workouts', ({ body }, response) => {
+  db.Workout.create(body)
   .then(dbWorkout => {
     response.json(dbWorkout)
   })
   .catch(error => {
     response.json(error)
-  })
+  });
 });
+
+app.put('/api/workouts/:id:', ({ body, params }, response) => {
+
+})
 
 
 
