@@ -44,21 +44,14 @@ const workoutSchema = new Schema(
       }
     ]
   },
-  // By default, Mongoose does not include virtuals when you convert a document to JSON. For example, if you pass a document to Express' res.json() function, virtuals will not be included by default.
-
-// To include virtuals in res.json(), you need to set the toJSON schema option to { virtuals: true 
-  {
-    toJSON: {
-      virtuals: true
-    }
-  }  
+  
 );
-workoutSchema.virtual("totaDuration").get(function(){
-  return this.exercises.reduce((total, exercise) => {
-    return total+exercise.duration
-  }, 0)
-});
+// workoutSchema.virtual("totaDuration").get(function(){
+//   return this.exercises.reduce((total, exercise) => {
+//     return total+exercise.duration
+//   }, 0)
+// });
 
-const Workout = mongoose.model("Workout", workoutSchema);
+const Workout = mongoose.model("Workout", WorkoutSchema);
 
-module.exports = Workout
+module.exports = Workout;

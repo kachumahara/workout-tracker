@@ -46,7 +46,7 @@ app.get("/api/workouts", (request, response) => {
       response.json(dbWorkout);
     })
     .catch(error => {
-      response.send(error);
+      response.json(error);
     });
 });
 
