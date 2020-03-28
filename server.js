@@ -5,6 +5,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const db = require("./models");
 const app = express();
+// const mongojs = require("mongojs");
 const PORT = process.env.PORT || 3000;
 
 app.use(logger("dev"));
@@ -21,7 +22,7 @@ app.use(express.static("public"));
 //connection to mongodb
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
-  useFindAndModify: false
+  
 });
 
 //html
@@ -75,6 +76,7 @@ app.put("/api/workouts/:id:", ({ body, params }, response) => {
     });
 });
 
+// getting 7 most recent workouts logged by user
 app.get("/api/workouts/range", (request, response) => {
   db.Workout.find()
     .sort({
