@@ -5,7 +5,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const db = require("./models");
 const app = express();
-const mongojs = require("mongojs");
+// const mongojs = require("mongojs");
 const PORT = process.env.PORT || 3000;
 
 app.use(logger("dev"));
@@ -38,7 +38,7 @@ app.get("/stats", (request, response) => {
   response.sendFile(path.join(__dirname + "/public/stats.html"));
 });
 
-//getting Workout Schemca from models/workout.js
+//getting Workout Schema from models/workout.js
 
 app.get("/api/workouts", (request, response) => {
   db.Workout.find({})
