@@ -5,7 +5,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const db = require("./models");
 const app = express();
-// const mongojs = require("mongojs");
+const mongojs = require("mongojs");
 const PORT = process.env.PORT || 3000;
 
 app.use(logger("dev"));
