@@ -25,7 +25,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   
 });
 
-//html
+//html routes
 app.get("/", (request, response) => {
   response.sendFile(path.join(__dirname + "/public/index.html"));
 });
@@ -65,7 +65,7 @@ app.post("/api/workouts", ({ body }, response) => {
 app.put("/api/workouts/:id:", ({ body, params }, response) => {
   db.Workout.findByIdAndUpdate(
     params.id,
-    { $push: { exercise: body } },
+    { $push: { exercises: body } },
     { new: true }
   )
     .then(dbWorkout => {
