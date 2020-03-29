@@ -6,10 +6,10 @@ const moment = require("moment");
 
 //creating workout schema
 
-const workoutSchema = new Schema(
+const WorkoutSchema = new Schema(
   {
     day: {
-      type: Date,
+      type: String,
       default: Date.now()
     },
     exercise: [
@@ -52,6 +52,6 @@ const workoutSchema = new Schema(
 //   }, 0)
 // });
 
-const Workout = mongoose.model("Workout", workoutSchema);
+const Workout = mongoose.model("Workout", WorkoutSchema);
 
 module.exports = Workout;

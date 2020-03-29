@@ -52,7 +52,7 @@ app.get("/api/workouts", (request, response) => {
 
 //creating a new post workout --> post
 app.post("/api/workouts", ({ body }, response) => {
-  db.Workout.create(body)
+  db.Workout.create(request.body)
     .then(dbWorkout => {
       response.json(dbWorkout);
     })
