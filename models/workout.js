@@ -12,7 +12,7 @@ const WorkoutSchema = new Schema(
       type: Date,
       default: Date.now()
     },
-    exercise: [
+    exercises: [
       // defining type, name, duration, weight, reps, sets, distance
       {
         type: {

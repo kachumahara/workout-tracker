@@ -63,7 +63,7 @@ app.post("/api/workouts", ({ body }, response) => {
 // edit existing workout--> put
 app.put("/api/workouts/:id", (request, response) => {
   db.Workout.findByIdAndUpdate(
-request.params.id,
+    request.params.id,
     { $push: { exercises: request.body } },
     { new: true, runValidators: true }
   )
@@ -78,9 +78,7 @@ request.params.id,
 // getting 7 most recent workouts logged by user
 app.get("/api/workouts/range", (request, response) => {
   db.Workout.find()
-    .sort({
-      day: -1
-    })
+
     .limit(7)
     .then(dbWorkout => {
       response.json(dbWorkout);
