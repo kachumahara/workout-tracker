@@ -21,8 +21,7 @@ app.use(express.static("public"));
 
 //connection to mongodb
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
-  useNewUrlParser: true,
-  
+  useNewUrlParser: true
 });
 
 //html routes
@@ -62,11 +61,11 @@ app.post("/api/workouts", ({ body }, response) => {
 });
 
 // edit existing workout--> put
-app.put("/api/workouts/:id:", ({ body, params }, response) => {
+app.put("/api/workouts/:id", (request, response) => {
   db.Workout.findByIdAndUpdate(
-    params.id,
-    { $push: { exercises: body } },
-    { new: true }
+request.params.id,
+    { $push: { exercises: request.body } },
+    { new: true, runValidators: true }
   )
     .then(dbWorkout => {
       response.json(dbWorkout);

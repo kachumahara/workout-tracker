@@ -9,7 +9,7 @@ const moment = require("moment");
 const WorkoutSchema = new Schema(
   {
     day: {
-      type: String,
+      type: Date,
       default: Date.now()
     },
     exercise: [
