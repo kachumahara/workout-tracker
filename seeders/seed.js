@@ -148,6 +148,3 @@ db.Workout.deleteMany({})
     console.error(err);
     process.exit(1);
   });
-
-const Workout = mongoose.model("Workout", WorkoutSchema);
-module.exports = Workout;
