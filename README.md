@@ -6,6 +6,13 @@ Creating a Workout / Fitness app using  Mongo database with a Mongoose schema an
 
 ![good1](https://user-images.githubusercontent.com/42631863/77965908-e9b78200-7296-11ea-826e-0226ced65dd7.jpg)
 
+## Technologies Used
+* MongoDB
+* Mongoose
+* Express
+* Npm packages
+* Node.js
+* Javascript
 
 Heroku Link: https://shrouded-reef-36317.herokuapp.com/
 
